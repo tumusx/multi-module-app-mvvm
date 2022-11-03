@@ -1,6 +1,6 @@
 # multi-module-app-mvvm
 MultiModule project MVVM Clean
-* Modules Dependency: 
+* Modules Dependency: more information: https://github.com/jraska/modules-graph-assert
   * digraph G {<br>
 ":ShoppingListItems" -> ":feature-listImages:presenter"
 ":ShoppingListItems" -> ":feature-listImages" [color=red style=bold]
