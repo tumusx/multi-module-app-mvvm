@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.jraska.module.graph.assertion")
 }
 
 android {
@@ -44,4 +45,8 @@ android {
 
 dependencies {
     implementation(libs.bundles.android.core)
+    implementation(project(mapOf("path" to ":feature-listImages:presenter")))
+    implementation(project(mapOf("path" to ":feature-listImages")))
+    implementation(libs.koinCore)
+    implementation(libs.koinAndroid)
 }

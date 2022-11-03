@@ -34,6 +34,9 @@ android {
 dependencies {
     implementation(libs.koinAndroid)
     implementation(libs.koinCore)
+    implementation(libs.retrofit)
     implementation(project(mapOf("path" to ":network")))
     implementation(project(mapOf("path" to ":feature-listImages:data")))
+    implementation(project(mapOf("path" to ":feature-listImages:domain")))
+    implementation(project(mapOf("path" to ":feature-listImages:presenter")))
 }

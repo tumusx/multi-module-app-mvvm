@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/muril/AndroidStudioProjects/ShoppingListItems/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/muril/AndroidStudioProjects/ShoppingListItems/feature-listImages/presenter/src/main/res/drawable/search_custom.xml" value="0.2925" />
+        <entry key="..\:/Users/muril/AndroidStudioProjects/ShoppingListItems/feature-listImages/presenter/src/main/res/layout/fragment_search_image.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

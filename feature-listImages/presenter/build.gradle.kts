@@ -27,6 +27,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -39,11 +43,15 @@ dependencies {
     implementation(libs.coroutines.lifeScope.ktx)
     implementation(libs.coroutines.lifeScope.runTime)
     implementation(libs.coroutine.ktx)
+    implementation(libs.koinAndroid)
     implementation(libs.coroutine.android)
     implementation(libs.viewmodel.ktx)
+    implementation(libs.fragment.ktx)
+    implementation(libs.activity.ktx)
     implementation(libs.junit.android.core)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.glide.lib)
     implementation(project(mapOf("path" to ":network")))
+    implementation(project(mapOf("path" to ":feature-listImages:data")))
 }

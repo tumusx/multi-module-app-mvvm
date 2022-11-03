@@ -1,3 +1,4 @@
+includeBuild("../")
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,6 +6,7 @@ pluginManagement {
         mavenCentral()
     }
 }
+
 
 enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
@@ -19,8 +21,9 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "ShoppingListItems"
 include(":app")
+rootProject.name = "ShoppingListItems"
+project(":app").name = "ShoppingListItems"
 include(":network")
 include(":datasource")
 include(":shared")

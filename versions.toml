@@ -19,6 +19,8 @@ glide = "4.13.2"
 koinVersion = "3.2.0"
 roomVersion = "2.4.1"
 recyclerview = "1.2.1"
+fragementKtx = "1.5.3"
+moduleDependency = "2.3.0"
 
 
 [libraries]
@@ -27,10 +29,11 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 material = { module = "com.google.android.material:material", version.ref = "material" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity-ktx" }
-
 viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
 runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragementKtx" }
+
 
 coroutine-ktx = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
 coroutine-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
@@ -59,6 +62,7 @@ recyclerViewDependency = { module = "androidx.recyclerview:recyclerview", versio
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "gradle-plugin" }
 android-kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+moduleDependency = { id = "com.jraska.module.graph.assertion", version.ref = "moduleDependency" }
 
 [bundles]
 android-core = ["androidx-core-ktx", "appcompat", "material", "constraintlayout"]
