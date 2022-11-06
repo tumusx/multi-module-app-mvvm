@@ -15,15 +15,9 @@ class SearchImageUseCaseImpl(private val repository: PixBayRepository) : SearchI
                 if (ValidateSearch.onMaxLengthQuery(query)?.isNotEmpty() == true) {
                     emit(RequestResult.FailureRequest(null, ValidateSearch.error))
                 } else {
-                    val resultData = repository.getImageResult(query).collect {
-                        when (it) {
-                            is RequestResult.SuccessRequest<ImageResultVO> -> {
-                                val resultVO = ImageResultVO(it.dataResult?.imagesListResult, it.dataResult?.totalLikeImage)
-                                emit(RequestResult.SuccessRequest(resultVO))
-                            }
-                            is RequestResult.FailureRequest -> {
-                                emit(RequestResult.FailureRequest(null, it.messageError))
-                            }
+                    repository.getImageResult(query).collect { resultImage ->
+                        resultImage.dataResult?.let { results ->
+                            emit(RequestResult.SuccessRequest(results))
                         }
                     }
                 }

@@ -1,6 +1,8 @@
 package com.github.tumusx.presenter.viewModel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.tumusx.domain.model.ImageResultVO
@@ -13,21 +15,22 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class ListImageViewModel(private val searchImageUseCase: SearchImageUseCase) : ViewModel() {
-    private val _stateReceiverImage: MutableStateFlow<State> =
-        MutableStateFlow(State.LoadingProcess)
-    val stateReceiverImage: StateFlow<State> = _stateReceiverImage
+    private val _stateReceiverImage: MutableLiveData<State> =
+        MutableLiveData(State.LoadingProcess)
+    val stateReceiverImage: LiveData<State> = _stateReceiverImage
 
-    fun searchImage(query: String) = viewModelScope.launch(Dispatchers.IO) {
-        searchImageUseCase.searchImageResult(query).collect {
-            when (it) {
-                is RequestResult.SuccessRequest<ImageResultVO> -> {
-                    Log.d("SCCESS", it.dataResult.toString())
-                    _stateReceiverImage.value = State.SuccessProcess(it.dataResult)
-                }
+    fun searchImage(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            searchImageUseCase.searchImageResult(query).collect {
+                when (it) {
+                    is RequestResult.SuccessRequest<ImageResultVO> -> {
+                        _stateReceiverImage.value = State.SuccessProcess(it.dataResult)
+                    }
 
-                is RequestResult.FailureRequest -> {
-                    _stateReceiverImage.value = State.ErrorProcess(it.messageError)
-                    Log.d("RESULT DATA ERROR ", it.messageError.toString())
+                    is RequestResult.FailureRequest -> {
+                        _stateReceiverImage.value = State.ErrorProcess(it.messageError)
+                        Log.d("RESULT DATA ERROR ", it.messageError.toString())
+                    }
                 }
             }
         }

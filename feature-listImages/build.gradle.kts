@@ -39,4 +39,5 @@ dependencies {
     implementation(project(mapOf("path" to ":feature-listImages:data")))
     implementation(project(mapOf("path" to ":feature-listImages:domain")))
     implementation(project(mapOf("path" to ":feature-listImages:presenter")))
+    testImplementation("junit:junit:4.12")
 }

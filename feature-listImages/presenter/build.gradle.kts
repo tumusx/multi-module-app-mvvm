@@ -39,6 +39,7 @@ android {
 dependencies {
     implementation(project(mapOf("path" to ":feature-listImages:domain")))
     implementation(project(mapOf("path" to ":shared")))
+    implementation(project(mapOf("path" to ":baseTest")))
     implementation(libs.androidx.core.ktx)
     implementation(libs.coroutines.lifeScope.ktx)
     implementation(libs.coroutines.lifeScope.runTime)
