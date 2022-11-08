@@ -9,18 +9,19 @@ import com.github.tumusx.domain.model.ImageResultVO
 import com.github.tumusx.domain.useCase.SearchImageUseCase
 import com.github.tumusx.network.RequestResult
 import com.github.tumusx.shared.State
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ListImageViewModel(private val searchImageUseCase: SearchImageUseCase) : ViewModel() {
+class ListImageViewModel(
+    private val coroutineContext: CoroutineContext,
+    private val searchImageUseCase: SearchImageUseCase
+) : ViewModel() {
     private val _stateReceiverImage: MutableLiveData<State> =
         MutableLiveData(State.LoadingProcess)
     val stateReceiverImage: LiveData<State> = _stateReceiverImage
 
     fun searchImage(query: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(coroutineContext) {
             searchImageUseCase.searchImageResult(query).collect {
                 when (it) {
                     is RequestResult.SuccessRequest<ImageResultVO> -> {
@@ -29,7 +30,6 @@ class ListImageViewModel(private val searchImageUseCase: SearchImageUseCase) : V
 
                     is RequestResult.FailureRequest -> {
                         _stateReceiverImage.value = State.ErrorProcess(it.messageError)
-                        Log.d("RESULT DATA ERROR ", it.messageError.toString())
                     }
                 }
             }

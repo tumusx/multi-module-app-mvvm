@@ -6,6 +6,7 @@ import com.github.tumusx.domain.useCase.SearchImageUseCase
 import com.github.tumusx.domain.useCase.SearchImageUseCaseImpl
 import com.github.tumusx.network.InstanceRetrofit
 import com.github.tumusx.presenter.viewModel.ListImageViewModel
+import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -23,5 +24,5 @@ val listImageModule = module {
         return SearchImageUseCaseImpl(providerRepository())
     }
 
-    viewModel { ListImageViewModel(providerInstanceSearchUseCase()) }
+    viewModel { ListImageViewModel(Dispatchers.IO, providerInstanceSearchUseCase()) }
 }

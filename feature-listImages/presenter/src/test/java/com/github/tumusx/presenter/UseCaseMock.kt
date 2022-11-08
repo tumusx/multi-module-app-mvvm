@@ -11,7 +11,7 @@ class UseCaseMock(private val repositoryMock: RepositoryMock) : SearchImageUseCa
     override suspend fun searchImageResult(query: String): Flow<RequestResult<ImageResultVO>> =
         flow {
             if (ValidateSearch.onMaxLengthQuery(query)?.isNotEmpty() == true) {
-                emit(RequestResult.FailureRequest(null, "ERROR"))
+                emit(RequestResult.FailureRequest(null, "Não foi possível buscar. É necessário digitar"))
             } else {
                 repositoryMock.getImageResult(query).collect {
                     emit(RequestResult.SuccessRequest(ImageResultVO(listOf(), listOf())))
