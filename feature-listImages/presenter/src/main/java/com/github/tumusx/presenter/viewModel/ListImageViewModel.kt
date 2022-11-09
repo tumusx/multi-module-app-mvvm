@@ -1,6 +1,5 @@
 package com.github.tumusx.presenter.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,11 +24,11 @@ class ListImageViewModel(
             searchImageUseCase.searchImageResult(query).collect {
                 when (it) {
                     is RequestResult.SuccessRequest<ImageResultVO> -> {
-                        _stateReceiverImage.value = State.SuccessProcess(it.dataResult)
+                        _stateReceiverImage.postValue(State.SuccessProcess(it.dataResult))
                     }
 
                     is RequestResult.FailureRequest -> {
-                        _stateReceiverImage.value = State.ErrorProcess(it.messageError)
+                        _stateReceiverImage.postValue(State.ErrorProcess(it.messageError))
                     }
                 }
             }

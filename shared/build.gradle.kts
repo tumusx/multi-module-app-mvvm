@@ -30,5 +30,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    dependencies {
+        testImplementation(libs.truth.test)
+        testImplementation(libs.android.test.core)
+        testImplementation(libs.junit.android.core)
+    }
 }
 

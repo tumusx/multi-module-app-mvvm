@@ -12,7 +12,7 @@ class SearchImageUseCaseImpl(private val repository: PixBayRepository) : SearchI
     override suspend fun searchImageResult(query: String): Flow<RequestResult<ImageResultVO>> =
         flow {
             try {
-                if (ValidateSearch.onMaxLengthQuery(query)?.isNotEmpty() == true) {
+                if (ValidateSearch.onMaxLengthQuery(query).isNotEmpty()) {
                     emit(RequestResult.FailureRequest(null, ValidateSearch.error))
                 } else {
                     repository.getImageResult(query).collect { resultImage ->

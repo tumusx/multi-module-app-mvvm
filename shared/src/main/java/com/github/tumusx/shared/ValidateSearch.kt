@@ -2,7 +2,7 @@ package com.github.tumusx.shared
 
 object ValidateSearch {
     var error = ""
-    fun onMaxLengthQuery(query: String): String? {
+    fun onMaxLengthQuery(query: String): String {
         if (query.count() > 20) {
             error = "Não foi possível buscar. É necessário digitar até 20 letras."
             return error
@@ -13,11 +13,13 @@ object ValidateSearch {
             return error
         }
 
-        if (query.contains("+18")) {
+        if (query.lowercase().contains("+18") || query.lowercase()
+                .contains("porno") || query.lowercase().contains("sex")
+        ) {
             error = "Ops... Esse tipo de pesquisa não é permitido aqui!"
             return error
         }
 
-        return null
+        return ""
     }
 }

@@ -31,12 +31,6 @@ class ListImageViewModelTest {
     }
 
     @Test
-    fun `validate util search empty`() {
-        val result = ValidateSearch.onMaxLengthQuery("")
-        assertEquals(result, "Não foi possível buscar. É necessário digitar")
-    }
-
-    @Test
     fun `when call searchImage empty search return error`() {
         viewModel.searchImage("")
         viewModel.stateReceiverImage.getOrAwaitValueTest().also { state ->
