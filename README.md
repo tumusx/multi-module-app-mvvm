@@ -17,3 +17,5 @@ MultiModule project MVVM Clean
 ":feature-listImages" -> ":feature-listImages:domain"
 ":feature-listImages" -> ":feature-listImages:presenter" [color=red style=bold]<br>
 }
+
+![image](https://user-images.githubusercontent.com/72824080/200463103-c4475a0f-4271-41aa-89d1-53316fc52e21.png)
